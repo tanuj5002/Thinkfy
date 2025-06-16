@@ -1,0 +1,38 @@
+.sidebar {
+  padding: 16px;
+  background-color: #fff;
+  border-left: 1px solid #eee;
+}
+
+h4 {
+  margin-bottom: 12px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+.active {
+  background-color: #e6f0ff;
+  font-weight: bold;
+}
+
+.duration {
+  color: #888;
+  font-size: 12px;
+}

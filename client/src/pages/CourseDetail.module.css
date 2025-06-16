@@ -1,0 +1,92 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.verticalSplit {
+  display: flex;
+  background-color: red;
+  height: 100%;
+  width: 100%;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 100%;
+  overflow-y: auto;
+  padding-left: 12px;
+  border-left: 1px solid #eee;
+}
+
+.horizontalSplit {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoSection {
+  overflow: hidden;
+  padding-bottom: 12px;
+}
+
+.infoSection {
+  overflow-y: auto;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Gutter styles */
+.gutter {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.gutter:hover {
+  background-color: #d1d5db;
+}
+
+.gutter.gutter-horizontal {
+  width: 6px;
+  cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+  height: 6px;
+  cursor: row-resize;
+}
+
+/* Responsive override */
+@media (max-width: 768px) {
+  .verticalSplit {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    border-left: none;
+    border-top: 1px solid #eee;
+    padding-left: 0;
+    padding-top: 12px;
+  }
+
+  .gutter.gutter-horizontal {
+    height: 6px;
+    width: 100%;
+    cursor: row-resize;
+  }
+
+  .gutter.gutter-vertical {
+    width: 100%;
+  }
+}

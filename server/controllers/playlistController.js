@@ -8,6 +8,17 @@ function extractPlaylistId(url) {
   return match ? match[1] : null;
 }
 
+function parseISODuration(duration) {
+  const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+
+  const [, hours = 0, minutes = 0, seconds = 0] = duration
+    .match(regex)
+    .map(v => parseInt(v) || 0);
+
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+
 async function fetchAllPlaylistVideos(playlistId) {
   const API_KEY = process.env.YT_API_KEY;
   const baseUrl = "https://www.googleapis.com/youtube/v3/playlistItems";
@@ -86,7 +97,7 @@ const courseCreate = asyncHandler(async (req, res) => {
 
           const duration =
             vidRes.data.items[0]?.contentDetails?.duration || null;
-
+          const durationInSec = parseISODuration(duration);
           const vidSave = await Video.create({
             playlistId: course._id,
             videoId: video.videoId,
@@ -94,7 +105,7 @@ const courseCreate = asyncHandler(async (req, res) => {
             lastWatchedTill: 0,
             description: video.description,
             thumbnail: video.thumbnail,
-            duration: duration,
+            duration: durationInSec,
             position: video.position,
             isCompeleted: false,
           });

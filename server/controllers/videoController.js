@@ -32,4 +32,19 @@ const videoDetails = asyncHandler(async (req,res) => {
     }
 })
 
-module.exports = {VideosOfCourse, videoDetails};
+
+//@desc Update data in a video
+//@route PUT /video/:id
+//@access public
+
+const updateVideo = asyncHandler(async (req,res) => {
+    const video = await Video.findByIdAndUpdate(req.params.id, req.body, {returnOriginal:false});
+    if(!video){
+        res.status(400);
+        throw new Error("Could not update the data");
+    }else{
+        res.status(200).json(video);
+    }
+})
+
+module.exports = {VideosOfCourse, videoDetails, updateVideo};

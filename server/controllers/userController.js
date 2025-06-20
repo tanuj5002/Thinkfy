@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../model/userModel");
+const Course = require("../model/playlistModel")
 
 //@desc User register
 //@route POST /user/register
@@ -22,5 +23,21 @@ const register = asyncHandler(async (req,res) =>{
         throw new Error("Could not create user")
     }
 })
-module.exports = {register};
 
+//@desc User courses
+//@route GET /user/courses/:id
+//@access public
+const allCourses = asyncHandler(async (req, res) => {
+    const courses = await Course.find({userId:req.params.id});
+    if(!courses){
+        res.status(400);
+        throw new Error("Courses not found");
+    }
+    else{
+        res.status(200).json(courses);
+    }
+})
+
+
+
+module.exports = {register, allCourses};

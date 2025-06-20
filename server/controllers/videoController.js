@@ -2,6 +2,34 @@ const asyncHandler = require("express-async-handler");
 const Video = require("../model/videoModel");
 const axios = require("axios");
 
-//@desc User courses
-//@route GET /user/courses/:id
+//@desc Get videos of a course
+//@route GET /video/course/:id
 //@access public
+
+const VideosOfCourse = asyncHandler(async (req,res) => {
+    const videos = await Video.find({playlistId:req.params.id});
+    if(!videos){
+        res.status(500);
+        throw new Error("Could not get videos");
+    }
+    else{
+        res.status(200).json(videos);
+    }
+})
+
+//@desc Get videos of a course
+//@route GET /video/:id
+//@access public
+
+const videoDetails = asyncHandler(async (req,res) => {
+    const video = await Video.findById(req.params.id);
+    if(!video){
+        res.status(500);
+        throw new Error("Could not get video");
+    }
+    else{
+        res.status(200).json(video);
+    }
+})
+
+module.exports = {VideosOfCourse, videoDetails};

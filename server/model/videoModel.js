@@ -8,7 +8,7 @@ const videoSchema = mongoose.Schema({
   lastWatchedTill:Number,
   description: String,
   thumbnail: String,
-  duration: Number, // in seconds
+  duration: String, // in seconds
   position: Number, // order in playlist
   isCompeleted:Boolean
 }, { timestamps: true })

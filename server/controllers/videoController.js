@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Video = require("../model/videoModel");
+const Course = require("../model/playlistModel")
 const axios = require("axios");
 
 //@desc Get videos of a course
@@ -7,7 +8,9 @@ const axios = require("axios");
 //@access public
 
 const VideosOfCourse = asyncHandler(async (req,res) => {
-    const videos = await Video.find({playlistId:req.params.id});
+    const course = await Course.findById(req.params.id);
+    const course_videos = course.videos;
+    const videos = await Video.find({_id:course_videos});
     if(!videos){
         res.status(500);
         throw new Error("Could not get videos");

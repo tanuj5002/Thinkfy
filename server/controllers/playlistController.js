@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Course = require("../model/playlistModel");
 const axios = require("axios");
 const Video = require("../model/videoModel");
+const User = require("../model/userModel");
 
 function extractPlaylistId(url) {
   const match = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
@@ -79,6 +80,10 @@ const courseCreate = asyncHandler(async (req, res) => {
         thumbnail: items[0].snippet.thumbnails.standard.url,
         totalVideos: items[0].contentDetails.itemCount,
       });
+
+        await User.findByIdAndUpdate(userID, {
+          $push: { course: course._id }
+      });
       // Storing videos to database
       const videos = await fetchAllPlaylistVideos(playlistID);
       let chk = true;
@@ -109,7 +114,11 @@ const courseCreate = asyncHandler(async (req, res) => {
             position: video.position,
             isCompeleted: false,
           });
-
+          if(vidSave){
+            await Course.findByIdAndUpdate(course._id, {
+              $push: { videos: vidSave._id }
+            });
+          }
           if (!vidSave) chk = false;
         }
         if (chk) {

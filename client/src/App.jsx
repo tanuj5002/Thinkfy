@@ -16,7 +16,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/course" element={<CourseDetail />} />
+          <Route path="/course/:playListId" element={<CourseDetail />} />
         </Routes>
       </BrowserRouter>
 

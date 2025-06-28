@@ -28,7 +28,10 @@ const register = asyncHandler(async (req,res) =>{
 //@route GET /user/courses/:id
 //@access public
 const allCourses = asyncHandler(async (req, res) => {
-    const courses = await Course.find({userId:req.params.id});
+    const user = await User.findById(req.params.id);
+    user_courses = user.course;
+    const courses = await Course.find({ _id: { $in: user_courses } });
+    // const courses = await Course.find({userId:req.params.id});
     if(!courses){
         res.status(400);
         throw new Error("Courses not found");

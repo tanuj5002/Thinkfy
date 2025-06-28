@@ -1,73 +1,98 @@
 .container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
   padding: 16px;
-}
-.gutter{
-  background: #f0f0f0;
-  position: relative;
-}
-.verticalSplit {
-  display: flex;
-  height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
-
 .mainContent {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-}
-
-.sidebar {
-  height: 100%;
-  overflow-y: auto;
-  padding-left: 12px;
-  border-left: 1px solid #eee;
-}
-
-.horizontalSplit {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.videoSection {
-  overflow: hidden;
-  padding-bottom: 12px;
-}
-
-.infoSection {
-  overflow-y: auto;
-  padding-top: 12px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
-@media (max-width: 768px) {
-  .verticalSplit {
-    flex-direction: column;
+.videoSection {
+  overflow: hidden;
+}
+.sidebarDesktop {
+  background: #f9f9f9;
+  padding: 16px;
+  border-left: 1px solid #eee;
+  height: fit-content;
+  border-radius: 8px;
+}
+.sidebarMobile {
+  display: none;
+}
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    display: block;
+    padding: 12px;
   }
 
-  .sidebar {
-    border-left: none;
+  .sidebarDesktop {
+    display: none;
+  }
+
+  .sidebarMobile {
+    display: block;
+    padding: 16px 12px;
     border-top: 1px solid #eee;
-    padding-left: 0;
-    padding-top: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+}
+.courseTitleWrapper {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #17a978;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.redStick {
+  width: 5px;
+  height: 50px;
+  background-color: #e50914;
+  border-radius: 2px;
+  margin-right: 12px;
+}
+
+.courseTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 768px) {
+  .courseTitleWrapper {
+    padding: 0.75rem;
   }
 
-  .gutter.gutter-horizontal {
-    height: 6px;
-    width: 100%;
-    cursor: row-resize;
+  .redStick {
+    margin-right: 10px;
   }
 
-  .gutter.gutter-vertical {
-    width: 100%;
+  .courseTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .courseTitleWrapper {
+    justify-content: space-between;
+  }
+
+  .courseTitle {
+    font-size: 1rem;
   }
 }

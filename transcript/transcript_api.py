@@ -22,7 +22,6 @@ def get_transcript():
 
         fetched = transcript.fetch()
 
-        # ✅ Fix: use attribute access, not dictionary access
         full_text = " ".join([entry.text for entry in fetched])
 
         return jsonify({"transcript": full_text})

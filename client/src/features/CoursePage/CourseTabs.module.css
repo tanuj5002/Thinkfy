@@ -1,21 +1,24 @@
 .tabs {
   display: flex;
-  gap: 16px;
-  margin: 16px 0;
-  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-button {
-  background: transparent;
-  border: none;
+.tab {
   padding: 8px 16px;
   cursor: pointer;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 6px;
   font-weight: 500;
-  border-bottom: 2px solid transparent;
-  font-size: 14px;
+  transition: background 0.2s ease-in-out;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
 }
 
 .active {
-  border-color: #007bff;
-  color: #007bff;
+  background-color: #333;
+  color: white;
 }

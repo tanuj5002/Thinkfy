@@ -28,7 +28,7 @@ const analyzeVideo = asyncHandler(async (req, res) => {
 
   try {
     const transcript = await getVideoTranscript(videoId);
-    // console.log(transcript);
+    console.log(transcript);
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
@@ -50,7 +50,7 @@ const analyzeVideo = asyncHandler(async (req, res) => {
         }
       }
     );
-
+    // console.log(response.data)
     res.status(200).json(response.data);
   } catch (err) {
     console.error("OpenRouter API error:", err.response?.data || err.message);

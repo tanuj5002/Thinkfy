@@ -3,7 +3,7 @@
 [![OpenAI Powered](https://img.shields.io/badge/AI-Quiz%20Generator-blue)](#features)
 [![Made with React](https://img.shields.io/badge/Frontend-React.js-61DAFB?logo=react)](#tech-stack)
 [![Backend Node.js](https://img.shields.io/badge/Backend-Node.js-43853D?logo=node.js)](#tech-stack)
-[![Database MongoDB](https://img.shields.io/badge/Database-MySQL-blue?logo=mysql)](#tech-stack)
+[![Database MongoDB](https://img.shields.io/badge/Database-MongoDB-4EA94B?logo=mongodb&logoColor=white)](#tech-stack)
 
 > **Thinkfy** is an **AI-powered, distraction-free learning platform** where students can import YouTube playlists and turn them into structured courses.  
 > After each video, an **AI-generated quiz** tests your understanding, and you can track your progress via an interactive **dashboard**.
